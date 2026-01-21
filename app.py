@@ -7,6 +7,7 @@ PDF_PATH = os.path.join(BASE_DIR, "data", "Swiggy_Annual_Report_FY_2023_24.pdf")
 
 app = Flask(__name__)
 
+# Initialize RAG once at startup
 rag = SwiggyRAGPipeline(PDF_PATH)
 rag.build_vectorstore()
 
@@ -25,7 +26,6 @@ def ask_question():
         return jsonify({"answer": "Please enter a valid question.", "sources": []})
 
     answer, sources = rag.generate_answer(question)
-
     pages = list({src.metadata.get("page", "N/A") for src in sources})
 
     return jsonify({
@@ -33,6 +33,3 @@ def ask_question():
         "sources": pages
     })
 
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
