@@ -17,10 +17,10 @@ python-dotenv
 '''
 
 flask
-langchain==0.1.20
-langchain-community==0.0.38
-langchain-text-splitters==0.0.1
-langchain-google-genai==1.0.3
+langchain
+langchain-community
+langchain-text-splitters
+langchain-google-genai
 langchain-huggingface
 sentence-transformers
 faiss-cpu
