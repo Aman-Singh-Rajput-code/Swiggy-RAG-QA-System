@@ -7,7 +7,7 @@ PDF_PATH = os.path.join(BASE_DIR, "data", "Swiggy_Annual_Report_FY_2023_24.pdf")
 
 app = Flask(__name__)
 
-# Initialize RAG once at startup
+
 rag = SwiggyRAGPipeline(PDF_PATH)
 rag.build_vectorstore()
 
