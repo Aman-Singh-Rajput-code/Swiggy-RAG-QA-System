@@ -1,22 +1,3 @@
-'''import os
-from dotenv import load_dotenv
-
-from langchain_community.document_loaders import PyPDFLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_community.vectorstores import FAISS
-from langchain.embeddings import HuggingFaceEmbeddings
-from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain.schema import SystemMessage, HumanMessage'''
-
-'''
-from langchain_community.document_loaders import PyPDFLoader
-from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_community.vectorstores import FAISS
-from langchain.embeddings import HuggingFaceEmbeddings
-from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain.schema import SystemMessage, HumanMessage
-'''
-
 import os
 from dotenv import load_dotenv
 
@@ -28,8 +9,6 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 #from langchain.schema import SystemMessage, HumanMessage
 from langchain_core.messages import SystemMessage, HumanMessage
 
-#load_dotenv()
-#load_dotenv()
 load_dotenv(dotenv_path=".env", override=True)
 
 
@@ -37,12 +16,10 @@ class SwiggyRAGPipeline:
     def __init__(self, pdf_path: str):
         self.pdf_path = pdf_path
 
-        # Open-source embeddings
         self.embeddings = HuggingFaceEmbeddings(
             model_name="sentence-transformers/all-MiniLM-L6-v2"
         )
 
-        # Gemini LLM (hallucination-safe config)
         self.llm = ChatGoogleGenerativeAI(
             model="gemini-2.5-flash",
             temperature=0,
